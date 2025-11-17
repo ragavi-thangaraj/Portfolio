@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects, getProjectBySlug } from '../../data/projects';
+
+export function getStaticPaths() {
+	return projects.map(project => ({
+		params: { slug: project.slug }
+	}));
+}
+
+const { slug } = Astro.params;
+const project = getProjectBySlug(slug as string);
+
+if (!project) {
+	return Astro.redirect('/404');
+}
+---
+
+<Layout>
+	<div class="page project-page">
+		<a href="/" class="back-link">← Back to Portfolio</a>
+		
+		<article class="project-detail">
+			<div class="project-image-container">
+				<img src={project.image} alt={project.title} class="project-detail-image" />
+			</div>
+			
+			<div class="project-content">
+				<h1 class="project-title">{project.title}</h1>
+				
+				<div class="project-tech">
+					{project.tech.map((tech: string) => (
+						<span class="tech-chip">{tech}</span>
+					))}
+				</div>
+				
+				<div class="project-description">
+					{project.description.split('.').filter(p => p.trim()).map((paragraph: string) => (
+						<p>{paragraph.trim()}.</p>
+					))}
+				</div>
+			</div>
+		</article>
+	</div>
+</Layout>
+
+<style>
+	.project-page {
+		max-width: min(90vw, 1000px);
+	}
+	
+	.back-link {
+		display: inline-block;
+		margin-bottom: clamp(20px, 3vh, 32px);
+		color: var(--black);
+		text-decoration: none;
+		font-size: clamp(14px, 1.5vw, 18px);
+		border: 2px dashed var(--black);
+		padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 20px);
+		border-radius: 6px;
+		transition: all 0.3s ease;
+	}
+	
+	.back-link:hover {
+		background: var(--black);
+		color: var(--yellow);
+		border-style: solid;
+		transform: translateX(-4px);
+	}
+	
+	.project-detail {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(24px, 3vh, 40px);
+	}
+	
+	.project-image-container {
+		width: 100%;
+		border: 3px dashed var(--black);
+		padding: clamp(12px, 1.5vw, 20px);
+		background: white;
+	}
+	
+	.project-detail-image {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		border: 3px solid var(--black);
+		display: block;
+	}
+	
+	.project-content {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(16px, 2vh, 24px);
+	}
+	
+	.project-title {
+		font-size: clamp(32px, 5vw, 56px);
+		font-weight: normal;
+		margin: 0;
+		line-height: 1.2;
+		border-bottom: 3px dashed var(--black);
+		padding-bottom: clamp(12px, 1.5vh, 20px);
+	}
+	
+	.project-tech {
+		display: flex;
+		flex-wrap: wrap;
+		gap: clamp(8px, 1vw, 12px);
+	}
+	
+	.tech-chip {
+		padding: clamp(8px, 1vw, 12px) clamp(14px, 1.5vw, 20px);
+		border: 2px dashed var(--black);
+		border-radius: 6px;
+		font-size: clamp(13px, 1.3vw, 16px);
+		background: transparent;
+		transition: all 0.2s;
+	}
+	
+	.tech-chip:hover {
+		background: var(--yellow);
+		border-style: solid;
+		transform: translateY(-2px);
+	}
+	
+	.project-description {
+		font-size: clamp(15px, 1.7vw, 20px);
+		line-height: 1.8;
+		color: var(--black);
+		opacity: 0.9;
+		text-align: justify;
+	}
+	
+	.project-description p {
+		margin-bottom: clamp(16px, 2vh, 24px);
+	}
+	
+	.project-description p:last-child {
+		margin-bottom: 0;
+	}
+	
+	@media (max-width: 780px) {
+		.project-detail {
+			gap: clamp(20px, 2.5vh, 32px);
+		}
+		
+		.project-image-container {
+			padding: clamp(10px, 1.2vw, 16px);
+		}
+	}
+</style>
+

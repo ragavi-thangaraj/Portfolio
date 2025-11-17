@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Project from '../components/Project.astro';
+import ragavi from '../assets/ragavi.png';
+import { projects as projectData } from '../data/projects';
+
+
+const data = {
+	name: 'Ragavi T',
+	email: 'ragavithangaraj09@gmail.com',
+	phone: '6380601352',
+	links: [
+		{ label: 'GitHub', href: '#' },
+		{ label: 'LinkedIn', href: '#' }
+	],
+	avatar: ragavi.src
+}
+
+const aboutMe = `Hi, I'm the kind of person who treats life like a debug window always analyzing, sometimes breaking things, and somehow fixing them just in time. I see myself as a curious human version of Google: I may not have every answer, but I'll definitely search until I find one.
+
+When I'm not solving problems or learning something new, you'll find me exploring hobbies that make me look productive even when I'm expertly procrastinating. I enjoy anything that challenges my brain, sparks creativity, or lets me escape reality for a bit whether that's diving into tech, discovering new ideas, or binge-watching something strictly "for research purposes."
+
+As for my aim, I'm on a mission to level up like a video-game character with more deadlines than dragons. I want to keep growing, improving, and surprising myself with what I can create. My vission is simple: build something meaningful and be proud of it… without accidentally deleting it halfway through.`
+
+const education = [
+	{ school: 'Kongu Engineering college', degree: 'MSc Computer Technology', note: 'CGPA: 8.02' },
+	{ school: 'Rajendran Matriculation Higher Secondary School', degree: 'HSC' }
+]
+
+const experience = [
+	{ 
+		title: 'CodSoft | Web Development', 
+		location: 'West Bengal, India', 
+		dates: 'Nov 2023 - Dec 2023', 
+		desc: 'Kickstarted my journey in Web Development through online learning, gaining hands-on experience with HTML, CSS, JavaScript. Built small projects like Smart calculator, CRUD app to strengthen practical understanding.' 
+	},
+	{ 
+		title: 'Codsoft | Java Developer', 
+		location: 'West Bengal, India', 
+		dates: 'August 2024 - Sep 2024', 
+		desc: 'Developed an Inventory Management System with dedicated admin and user modules, enabling role-based access control. Implemented full CRUD operations for efficient product management, improving usability and streamlining workflows.' 
+	},
+	{ 
+		title: 'Ligths.Inc. | App Development | Team Coordinator', 
+		location: 'TamilNadu India', 
+		dates: 'Sep 2024 - March 2025', 
+		desc: 'Leading the development of a mobile application that helps users manage personal finances by tracking income, expenses, and savings. Coordinating a team of seven members while contributing to core features like budget tracking and savings insights.' 
+	}
+]
+
+const skills = {
+	'Programming Languages': ['C', 'Java', 'Dart', 'React Native', 'OOP in C++'],
+	'Libraries/Frameworks': ['HTML', 'JavaScript', 'Tailwind CSS', 'PHP', 'React', 'Flutter'],
+	'Tools/Platforms': ['Figma', 'MIT tool', 'Visual Studio', 'Git', 'Android Studio', 'GitHub'],
+	'Databases': ['MySQL', 'MongoDB', 'FireBase']
+}
+
+const projects = projectData;
+
+const certifications = [
+	'Oracle APEX Cloud Developer Certified Professional - Oracle',
+	'PHP & MySQL - The Ultimate Web Development Training - Infosys SpringBoard',
+	'Agile Scrum Master - Fundamentals - Infosys SpringBoard',
+	'Introduction to NoSQL databases - Infosys SpringBoard',
+	'Database Management System Part- 2 - Infosys SpringBoard',
+	'Software Engineering and Agile software development - Infosys SpringBoard',
+	'Email Writing Skills - Infosys SpringBoard',
+	'High Impact Presentations - Infosys SpringBoard',
+	'Agile Scrum in Practice - Infosys SpringBoard',
+	'Programming using Java - Infosys SpringBoard',
+	'Time Management - Infosys SpringBoard',
+	'Data Structures and Algorithms - Infosys',
+	'Creating Responsive Web Pages using Bootstrap 4 - Infosys SpringBoard'
+]
+
+const honors = [
+	'Won 1st Prize in Technical Presentation in both 1st and 2nd Year',
+	'Won 3rd Prize in HackWave Intra-Department Hackathon in 2025',
+	'Won 2nd Prize in KEC HACKATHON 2025 state level hackathon',
+	'Won 1st prize in Thinkathon in Vellar College of Engineering',
+	'Secured 1st Prize in the Intra-Department Ideathon by presenting an innovative pitch on a Waste Management App aimed at promoting sustainable solutions',
+	'Achieved First Prize in the Proof of Concept event by successfully developing and implementing a Waste Management App, originally conceptualized and pitched during the Ideathon'
+]
+---
+
+<Layout>
+	<div class="page">
+		<Header name={data.name} email={data.email} phone={data.phone} links={data.links} avatarSrc={data.avatar} />
+
+		<section class="section about-me-section">
+			<h3>This Is Me</h3>
+			<div class="about-me-content">
+				{aboutMe.split('\n\n').map(paragraph => (
+					<p class="about-me-text">{paragraph}</p>
+				))}
+			</div>
+		</section>
+
+		<section class="section">
+			<h3>Education</h3>
+			{education.map(e => (
+				<div style="margin-bottom:12px">
+					<strong>{e.school}</strong> — <span class="muted">{e.degree} {e.note ? ' • ' + e.note : ''}</span>
+				</div>
+			))}
+		</section>
+
+		<section class="section">
+			<h3>Experience</h3>
+			{experience.map(ex => (
+				<div class="experience-item" style="margin-bottom:16px">
+					<strong>{ex.title}</strong> <span class="muted">({ex.dates})</span>
+					<div class="muted">{ex.location}</div>
+					<div class="experience-desc" style="margin-top:8px">{ex.desc}</div>
+				</div>
+			))}
+		</section>
+
+		<section class="section">
+			<h3>Skills</h3>
+			{Object.entries(skills).map(([category, items]) => (
+				<div style="margin-bottom: 14px">
+					<strong>{category}:</strong>
+					<div class="skills" style="margin-top: 8px">
+						{items.map(s => <span class="chip">{s}</span>)}
+					</div>
+				</div>
+			))}
+		</section>
+
+		<section class="section">
+			<h3>Projects / Open-Source</h3>
+			<div class="projects">
+				{projects.map((p, index) => {
+					const hasImage = !!p.image;
+					// Dynamic gallery layout - mix of sizes for visual interest
+					let sizeClass = 'project-normal';
+					if (hasImage) {
+						// Alternate between different sizes for better space utilization
+						if (index % 4 === 0) sizeClass = 'project-large';
+						else if (index % 4 === 1) sizeClass = 'project-wide';
+						else if (index % 4 === 2) sizeClass = 'project-normal';
+						else sizeClass = 'project-normal';
+					} else {
+						sizeClass = 'project-no-image';
+					}
+					return <Project title={p.title} tech={p.tech} link={`/projects/${p.slug}`} image={p.image} sizeClass={sizeClass} />;
+				})}
+			</div>
+		</section>
+
+		<section class="section">
+			<h3>Certifications</h3>
+			<ul class="cert-list">
+				{certifications.map(c => <li class="muted">{c}</li>)}
+			</ul>
+		</section>
+
+		<section class="section">
+			<h3>Honors & Awards</h3>
+			<ul class="honors-list">
+				{honors.map(h => <li class="muted">{h}</li>)}
+			</ul>
+		</section>
+
+		<div class="footer muted">Made with yellow & black — sketch style portfolio</div>
+	</div>
+</Layout>

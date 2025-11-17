@@ -1,0 +1,59 @@
+---
+const { title, tech, link, image, sizeClass } = Astro.props;
+---
+<article class={`project ${sizeClass || ''}`}>
+  {image ? <img src={image} alt={title} /> : ''}
+  <div class="project-card-content">
+    <h4>{title}</h4>
+    <div class="project-tech-stack">
+      {tech?.map((t: string) => <span class="chip">{t}</span>)}
+    </div>
+    {link ? <a href={link} class="view-btn">View Project →</a> : ''}
+  </div>
+</article>
+
+<style>
+	.project-card-content {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(10px, 1.2vh, 14px);
+		flex: 1;
+		justify-content: space-between;
+		height: 100%;
+	}
+	
+	.project h4 {
+		margin: 0;
+		font-size: clamp(14px, 1.5vw, 18px);
+		font-weight: 700;
+		line-height: 1.3;
+	}
+	
+	.project-tech-stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: clamp(6px, 0.8vw, 10px);
+	}
+	
+	.view-btn {
+		display: inline-block;
+		margin-top: clamp(8px, 1vh, 12px);
+		padding: clamp(8px, 1vw, 10px) clamp(12px, 1.5vw, 16px);
+		border: 2px dashed var(--black);
+		border-radius: 6px;
+		text-decoration: none;
+		color: var(--black);
+		font-size: clamp(12px, 1.2vw, 14px);
+		font-weight: 600;
+		transition: all 0.3s ease;
+		text-align: center;
+		align-self: flex-start;
+	}
+	
+	.view-btn:hover {
+		background: var(--black);
+		color: var(--yellow);
+		border-style: solid;
+		transform: translateX(4px);
+	}
+</style>

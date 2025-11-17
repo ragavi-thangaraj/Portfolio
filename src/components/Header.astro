@@ -1,0 +1,165 @@
+---
+const { name, email, phone, links, avatarSrc } = Astro.props;
+---
+<header class="header">
+	<div class="header-content">
+		{avatarSrc && (
+			<img src={avatarSrc} alt={name} class="profile-image" />
+		)}
+		<div class="header-info">
+			<h1 class="name">{name}</h1>
+			<p class="tagline">Software Developer | Mobile App Developer</p>
+			<div class="email-line">
+				<a href={`mailto:${email}`} class="contact-link">{email}</a>
+			</div>
+			<div class="contact-info">
+				<a href={`tel:${phone}`} class="contact-link">{phone}</a>
+			</div>
+			<div class="social-paragraph">
+				<br/>
+				You can also find me around the internet mostly building, experimenting, or connecting with people. I share my projects, ideas, and work-in-progress updates on <a href={links?.find((l: { href: string; label: string }) => l.label === 'GitHub')?.href || '#'} target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>, where my code lives its best life.<br/>
+				<br/>
+				On <a href={links?.find((l: { href: string; label: string }) => l.label === 'LinkedIn')?.href || '#'} target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>, I'm usually learning from others, and sharing my professional journey. Whether you're curious about my work or just want to connect, both platforms are great places to reach me.
+			</div>
+		</div>
+	</div>
+</header>
+
+<style>
+	.header {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		border-bottom: none;
+		animation: slideDown 0.5s ease-out;
+	}
+	
+	@keyframes slideDown {
+		from {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	
+	.header-content {
+		display: flex;
+		gap: clamp(20px, 3vw, 32px);
+		align-items: flex-start;
+	}
+	
+	.profile-image {
+		width: clamp(300px, 35vw, 450px);
+		height: auto;
+		border-radius: 0;
+		border: none;
+		object-fit: contain;
+		flex-shrink: 0;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease;
+		float: left;
+		margin-right: clamp(20px, 3vw, 32px);
+		margin-bottom: clamp(16px, 2vh, 24px);
+	}
+	
+	.profile-image:hover {
+		transform: scale(1.05);
+	}
+	
+	.header-info {
+		flex: 1;
+		overflow: hidden;
+	}
+	
+	.name {
+		font-size: clamp(42px, 6vw, 72px);
+		margin: 0 0 0 0;
+		font-weight: normal;
+		line-height: 1.2;
+	}
+
+	.tagline {
+		margin: clamp(4px, 0.8vh, 8px) 0;
+		font-size: clamp(16px, 2vw, 22px);
+		font-weight: 600;
+	}
+
+	.email-line {
+		margin: clamp(4px, 0.8vh, 8px) 0;
+		font-size: clamp(14px, 1.6vw, 18px);
+	}
+	
+	.contact-info {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-bottom: clamp(6px, 0.8vh, 10px);
+		margin-top: clamp(4px, 0.6vh, 8px);
+		font-size: clamp(14px, 1.5vw, 18px);
+	}
+	
+	.contact-link {
+		color: var(--black);
+		text-decoration: none;
+	}
+	
+	.contact-link:hover {
+		text-decoration: underline;
+	}
+	
+	.separator {
+		opacity: 0.6;
+	}
+	
+	.social-paragraph {
+		font-size: clamp(14px, 1.6vw, 18px);
+		line-height: 1.8;
+		margin-top: clamp(8px, 1vh, 12px);
+		color: var(--black);
+		opacity: 0.9;
+		text-align: justify;
+	}
+	
+	.social-link {
+		color: var(--black);
+		text-decoration: underline;
+		text-decoration-style: dashed;
+		transition: all 0.2s;
+	}
+	
+	.social-link:hover {
+		color: var(--yellow);
+		text-decoration-style: solid;
+	}
+	
+	@media (max-width: 640px) {
+		.header-content {
+			flex-direction: column;
+		}
+		
+		.profile-image {
+			width: 100%;
+			height: auto;
+			float: none;
+			margin-right: 0;
+			margin-bottom: clamp(16px, 2vh, 24px);
+		}
+		
+		.name {
+			font-size: clamp(32px, 6vw, 48px);
+		}
+		
+		.contact-info {
+			font-size: clamp(12px, 2vw, 16px);
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 4px;
+		}
+		
+		.separator {
+			display: none;
+		}
+	}
+</style>

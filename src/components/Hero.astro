@@ -1,0 +1,12 @@
+---
+const { name, title, summary, avatar } = Astro.props;
+---
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">Hi, I am</div>
+    <h1>{name} — <span class="muted">{title}</span></h1>
+    <p>{summary}</p>
+    <a class="cta" href="#projects">See projects</a>
+  </div>
+  {avatar ? <img src={avatar} alt="hero" class="hero-image scribble" /> : ''}
+</section>
