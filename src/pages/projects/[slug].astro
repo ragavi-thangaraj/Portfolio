@@ -59,6 +59,14 @@ if (!project) {
 						))
 					)}
 				</div>
+				
+				{project.slug === 'wool-transport-monitoring-app' && (
+					<div class="try-app-container">
+						<a href="https://drive.google.com/drive/folders/1AT0gS6k2fgrquvr12enHsJb7gLJOYTyt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="try-app-button">
+							Try App
+						</a>
+					</div>
+				)}
 			</div>
 		</article>
 	</div>
@@ -167,6 +175,36 @@ if (!project) {
 		border-radius: 3px;
 		font-weight: 600;
 		color: var(--black);
+	}
+	
+	.try-app-container {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: clamp(20px, 2.5vh, 32px);
+	}
+	
+	.try-app-button {
+		display: inline-block;
+		padding: clamp(8px, 1vw, 12px) clamp(16px, 2vw, 24px);
+		border: 3px dashed var(--black);
+		border-radius: 8px;
+		background: white;
+		color: var(--black);
+		text-decoration: none;
+		font-size: clamp(14px, 1.5vw, 18px);
+		font-weight: 700;
+		text-align: center;
+		transition: all 0.3s ease;
+		cursor: pointer;
+		width: fit-content;
+	}
+	
+	.try-app-button:hover {
+		background: var(--black);
+		color: var(--yellow);
+		border-style: solid;
+		transform: translateY(-3px);
+		box-shadow: 6px 6px 0 var(--yellow);
 	}
 	
 	@media (max-width: 780px) {
