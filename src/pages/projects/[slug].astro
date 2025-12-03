@@ -35,9 +35,29 @@ if (!project) {
 				</div>
 				
 				<div class="project-description">
-					{project.description.split('.').filter(p => p.trim()).map((paragraph: string) => (
-						<p>{paragraph.trim()}.</p>
-					))}
+					{project.slug === 'wool-transport-monitoring-app' ? (
+						<>
+							<p>
+								I developed a mobile application designed to <span class="highlight">directly connect wool producers with consumers</span>, <span class="highlight">removing the need for intermediaries</span> and ensuring <span class="highlight">fair, transparent pricing</span> for farmers. The core vision of the app is to empower wool producers by giving them a <span class="highlight">direct digital platform</span> to showcase and sell their products without dependency on middlemen.
+							</p>
+							<p>
+								To support farmers in managing their resources effectively, the app includes a <span class="highlight">wool storage management system</span> that helps them organize and track their stored wool. Additionally, using the <span class="highlight">Google Maps API</span>, the application <span class="highlight">automatically detects the user's location</span> and displays <span class="highlight">nearby wool storage facilities</span>, making the process of locating storage centers easier and more efficient.
+							</p>
+							<p>
+								The app also incorporates <span class="highlight">educational modules</span> aimed at improving the knowledge and skills of wool producers. These modules provide valuable insights on <span class="highlight">enhancing wool quality</span>, understanding <span class="highlight">market standards</span>, and increasing competitiveness in the industry. To make the application accessible to users across India, it includes <span class="highlight">multi-language support</span> with Tamil, English, and Hindi.
+							</p>
+							<p>
+								For seamless user management, <span class="highlight">Firebase</span> is used to handle <span class="highlight">authentication</span> and securely store user details during the signup process. The app also features a <span class="highlight">dynamic news feed</span> where wool producers and manufacturers can view daily updates about <span class="highlight">market trends, wool prices, and industry developments</span>. Users can upload their wool or wool-based products to the <span class="highlight">marketplace</span> and browse newly added items from other sellers.
+							</p>
+							<p>
+								Beyond trading and product management, the app offers several community-focused features. Wool producers can <span class="highlight">form groups</span> to share knowledge, collaborate, and build stronger professional relationships. The platform also includes a <span class="highlight">chatbot</span> to assist users with their queries and a <span class="highlight">real-time discussion room</span> where multiple users can communicate live. Overall, the application creates a <span class="highlight">comprehensive digital ecosystem</span> that enhances trading efficiency, encourages community engagement, and supports the growth of the wool industry.
+							</p>
+						</>
+					) : (
+						project.description.split('.').filter(p => p.trim()).map((paragraph: string) => (
+							<p>{paragraph.trim()}.</p>
+						))
+					)}
 				</div>
 			</div>
 		</article>
@@ -139,6 +159,14 @@ if (!project) {
 	
 	.project-description p:last-child {
 		margin-bottom: 0;
+	}
+	
+	.highlight {
+		background: linear-gradient(120deg, rgba(204, 153, 0, 0.3) 0%, rgba(204, 153, 0, 0.2) 100%);
+		padding: 2px 4px;
+		border-radius: 3px;
+		font-weight: 600;
+		color: var(--black);
 	}
 	
 	@media (max-width: 780px) {
