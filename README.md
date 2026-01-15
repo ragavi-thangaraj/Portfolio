@@ -10,7 +10,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 ## My Portfolio  
-<video src="https://github.com/raagavee/portfolio/assets/1234/portfolio_read.mp4" width="100%" controls></video>
+<video src="https://github.com/raagavee/portfolio/assets/1234/portfolio.mp4" width="100%" controls></video>
 
 
 
