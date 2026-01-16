@@ -10,7 +10,7 @@
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 <img 
-  src="https://github.com/raagavee/portfolio/assets/1234/demo.gif" 
+  src="https://github.com/ragavi-thangaraj/Portfolio/blob/main/demo.gif" 
   width="90%" 
   alt="Portfolio Demo"
 />
