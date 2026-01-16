@@ -1,6 +1,4 @@
-<a href="https://portfolio-delta-five-25.vercel.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Visit%20My%20Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
-</a>
+
 
 ### Developed Using 
 
@@ -15,6 +13,9 @@
   alt="Portfolio Demo"
 />
 
+<a href="https://portfolio-delta-five-25.vercel.app/" target="_blank">
+  <img src="https://img.shields.io/badge/Visit%20My%20Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
+</a>
 
 
 
