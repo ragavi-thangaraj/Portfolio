@@ -9,8 +9,12 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-## My Portfolio  
-<video src="https://github.com/raagavee/portfolio/assets/1234/portfolio.mp4" width="100%" controls></video>
+<img 
+  src="https://github.com/raagavee/portfolio/assets/1234/demo.gif" 
+  width="90%" 
+  alt="Portfolio Demo"
+/>
+
 
 
 
